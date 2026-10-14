@@ -1,0 +1,39 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Virtual Graphics",
+	description = "Virtual Graphics 是一个开源非营利组织，主要聚焦于计算机图形学软件开发，打造游戏引擎、渲染器、物理仿真、具身智能训练平台与动画工具等 CG Tools。",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta name="theme-color" content="#0b0e14" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-night-900 font-sans text-zinc-300 antialiased">
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

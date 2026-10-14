@@ -1,0 +1,33 @@
+---
+import { orgUrl, tdsgUrl } from "../data/projects";
+
+const year = new Date().getFullYear();
+
+const links = [
+	{ href: orgUrl, label: "GitHub" },
+	{ href: tdsgUrl, label: "TDSG" },
+	{ href: "https://github.com/Virtual-Graphics/.github", label: "组织简介" },
+];
+---
+
+<footer class="border-t border-white/5">
+	<div
+		class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-zinc-500 sm:flex-row sm:px-6"
+	>
+		<p>© {year} Virtual Graphics · 开源非营利组织</p>
+		<div class="flex items-center gap-6">
+			{
+				links.map((link) => (
+					<a
+						href={link.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="transition hover:text-zinc-300"
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</div>
+	</div>
+</footer>

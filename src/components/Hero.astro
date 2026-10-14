@@ -1,0 +1,72 @@
+---
+import { orgUrl } from "../data/projects";
+---
+
+<section class="relative overflow-hidden">
+	<div
+		class="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)]"
+		aria-hidden="true"
+	>
+	</div>
+	<div
+		class="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div
+		class="relative mx-auto max-w-6xl px-4 pt-24 pb-24 sm:px-6 sm:pt-32 sm:pb-32"
+	>
+		<p
+			class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-mono text-xs tracking-widest text-cyan-300"
+		>
+			<span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+			OPEN SOURCE · COMPUTER GRAPHICS
+		</p>
+
+		<h1
+			class="max-w-3xl text-5xl font-bold tracking-tight text-white sm:text-7xl"
+		>
+			Virtual <span
+				class="bg-gradient-to-r from-cyan-400 via-sky-400 to-violet-400 bg-clip-text text-transparent"
+				>Graphics</span
+			>
+		</h1>
+
+		<p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+			一个聚焦计算机图形学软件开发的开源非营利组织。我们热衷于打造面向创作者
+			的 CG Tools —— 游戏引擎、渲染器、物理仿真软件、具身智能训练平台与动画
+			制作工具。
+		</p>
+
+		<div class="mt-10 flex flex-wrap items-center gap-4">
+			<a
+				href="#projects"
+				class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500 px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+			>
+				浏览项目
+				<svg
+					class="h-4 w-4"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="M5 12h14"></path>
+					<path d="m13 6 6 6-6 6"></path>
+				</svg>
+			</a>
+			<a
+				href={orgUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-cyan-400/40 hover:text-white"
+			>
+				在 GitHub 上关注我们
+			</a>
+		</div>
+	</div>
+</section>
