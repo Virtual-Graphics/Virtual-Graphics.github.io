@@ -2,85 +2,43 @@
 import { projects, orgUrl } from "../data/projects";
 ---
 
-<section id="projects" class="scroll-mt-20 border-t border-white/5">
-	<div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-		<div class="flex flex-wrap items-end justify-between gap-6">
-			<div>
-				<p class="font-mono text-xs tracking-[0.3em] text-cyan-400">
-					// PROJECTS
-				</p>
-				<h2 class="mt-4 text-3xl font-bold text-white sm:text-4xl">项目</h2>
-				<p class="mt-5 max-w-2xl leading-relaxed text-zinc-400">
-					我们正在持续打磨自己的 CG Tools，以下是一些代表作。
-				</p>
-			</div>
-			<a
-				href={orgUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
-			>
-				查看全部仓库 →
-			</a>
-		</div>
+<section id="projects" class="border-t border-zinc-800">
+	<div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+		<h2 class="text-2xl font-bold text-white sm:text-3xl">项目</h2>
+		<p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">
+			我们正在持续打磨自己的 CG Tools，以下是一些代表作。
+		</p>
 
-		<div class="mt-12 grid gap-5 md:grid-cols-2">
+		<ul class="mt-10 space-y-8">
 			{
 				projects.map((project) => (
-					<a
-						href={project.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="group flex flex-col rounded-2xl border border-white/10 bg-night-800/60 p-6 transition hover:-translate-y-1 hover:border-cyan-400/40"
-					>
-						<div class="flex items-center gap-3">
-							<span class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-								<svg
-									class="h-4.5 w-4.5 text-cyan-300"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.8"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									aria-hidden="true"
-								>
-									<path d="M12 2.5 21 7.5v9l-9 5-9-5v-9l9-5Z" />
-									<path d="M12 12 21 7.5" />
-									<path d="M12 12v9.5" />
-									<path d="M12 12 3 7.5" />
-								</svg>
-							</span>
-							<h3 class="text-lg font-semibold text-white">
-								{project.name}
-							</h3>
-							<svg
-								class="ml-auto h-4 w-4 shrink-0 text-zinc-500 transition group-hover:text-cyan-300"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								aria-hidden="true"
-							>
-								<path d="M7 17 17 7" />
-								<path d="M8 7h9v9" />
-							</svg>
-						</div>
-						<p class="mt-4 flex-1 text-sm leading-relaxed text-zinc-400">
+					<li>
+						<a
+							href={project.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="font-medium text-white hover:underline"
+						>
+							{project.name}
+						</a>
+						<p class="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
 							{project.description}
 						</p>
-						<div class="mt-5 flex flex-wrap gap-2">
-							{project.tags.map((tag) => (
-								<span class="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-xs text-zinc-400">
-									{tag}
-								</span>
-							))}
-						</div>
-					</a>
+						<p class="mt-2 text-xs text-zinc-500">
+							{project.tags.join(" · ")}
+						</p>
+					</li>
 				))
 			}
-		</div>
+		</ul>
+
+		<a
+			href={orgUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="mt-8 inline-block text-sm text-zinc-400 hover:text-white"
+		>
+			查看全部仓库 →
+		</a>
 	</div>
 </section>

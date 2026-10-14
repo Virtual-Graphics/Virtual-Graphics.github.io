@@ -10,11 +10,11 @@ const links = [
 ];
 ---
 
-<footer class="border-t border-white/5">
+<footer class="border-t border-zinc-800">
 	<div
-		class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-zinc-500 sm:flex-row sm:px-6"
+		class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between"
 	>
-		<p>© {year} Virtual Graphics · 开源非营利组织</p>
+		<p>© {year} Virtual Graphics</p>
 		<div class="flex items-center gap-6">
 			{
 				links.map((link) => (
@@ -22,7 +22,7 @@ const links = [
 						href={link.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="transition hover:text-zinc-300"
+						class="hover:text-zinc-300"
 					>
 						{link.label}
 					</a>
