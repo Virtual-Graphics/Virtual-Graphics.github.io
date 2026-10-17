@@ -1,8 +1,8 @@
 ---
+import BrandMark from "./BrandMark.astro";
 import { orgUrl, tdsgUrl } from "../data/projects";
 
 const year = new Date().getFullYear();
-
 const links = [
 	{ href: orgUrl, label: "GitHub" },
 	{ href: tdsgUrl, label: "TDSG" },
@@ -10,24 +10,45 @@ const links = [
 ];
 ---
 
-<footer class="border-t border-zinc-800">
-	<div
-		class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between"
-	>
-		<p>© {year} Virtual Graphics</p>
-		<div class="flex items-center gap-6">
-			{
-				links.map((link) => (
-					<a
-						href={link.href}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="hover:text-zinc-300"
-					>
-						{link.label}
-					</a>
-				))
-			}
+<footer>
+	<div class="container">
+		<div class="footer-main">
+			<a href="/" class="footer-brand" aria-label="Virtual Graphics 首页"><BrandMark class="footer-mark" /><span>Virtual Graphics</span></a>
+			<p>以开放的代码，连接创作与想象。</p>
+			<nav aria-label="页脚导航">
+				{links.map((link) => (
+					<a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} <span aria-hidden="true">↗</span></a>
+				))}
+			</nav>
+		</div>
+		<div class="footer-bottom">
+			<p>© {year} Virtual Graphics</p>
+			<p class="eyebrow">OPEN SOURCE. BUILT TOGETHER.</p>
+			<a href="#main-content">回到顶部 <span aria-hidden="true">↑</span></a>
 		</div>
 	</div>
 </footer>
+
+<style>
+	footer { border-top: 1px solid var(--line); }
+	.footer-main { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; padding-block: 38px; }
+	.footer-brand { display: flex; align-items: center; gap: 12px; color: #e6e6e8; font-size: 14px; font-weight: 500; letter-spacing: -0.03em; }
+	.footer-brand :global(.footer-mark) { width: 28px; height: 26px; }
+	.footer-main > p { color: #96969f; font-size: 11px; }
+	nav { display: flex; gap: 28px; margin-left: auto; font-size: 11px; color: #adadb5; }
+	nav a { display: flex; align-items: center; gap: 10px; }
+	nav span { color: #85858e; }
+	a:hover { color: #fff; }
+	.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; border-top: 1px solid var(--line); color: #96969f; font-size: 10px; }
+	.footer-bottom .eyebrow { font-size: 8px; }
+	.footer-bottom a { display: flex; gap: 16px; }
+	@media (max-width: 760px) {
+		.footer-main { gap: 20px; }
+		.footer-main > p { width: 100%; order: 3; }
+		.footer-bottom .eyebrow { display: none; }
+	}
+	@media (max-width: 480px) {
+		nav { width: 100%; margin-left: 0; }
+		.footer-main > p { order: initial; }
+	}
+</style>

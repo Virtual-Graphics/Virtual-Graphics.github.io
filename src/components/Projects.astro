@@ -2,43 +2,92 @@
 import { projects, orgUrl } from "../data/projects";
 ---
 
-<section id="projects" class="border-t border-zinc-800">
-	<div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
-		<h2 class="text-2xl font-bold text-white sm:text-3xl">项目</h2>
-		<p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">
-			我们正在持续打磨自己的 CG Tools，以下是一些代表作。
-		</p>
-
-		<ul class="mt-10 space-y-8">
-			{
-				projects.map((project) => (
-					<li>
-						<a
-							href={project.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="font-medium text-white hover:underline"
-						>
-							{project.name}
-						</a>
-						<p class="mt-1 max-w-2xl text-sm leading-relaxed text-zinc-400">
-							{project.description}
-						</p>
-						<p class="mt-2 text-xs text-zinc-500">
-							{project.tags.join(" · ")}
-						</p>
-					</li>
-				))
-			}
+<section id="projects" aria-labelledby="projects-title">
+	<div class="container">
+		<p class="eyebrow section-label">02 / SELECTED PROJECTS</p>
+		<div class="projects-heading">
+			<div>
+				<h2 id="projects-title">把想法，写成工具。</h2>
+				<p>持续打磨的 CG Tools，也是我们探索图形学的方式。</p>
+			</div>
+			<a href={orgUrl} target="_blank" rel="noopener noreferrer" class="text-link">查看全部仓库 <span aria-hidden="true">↗</span></a>
+		</div>
+		<ul class="projects-list">
+			{projects.map((project, index) => (
+				<li>
+					<article class="project">
+						<div class="project-visual" aria-hidden="true">
+							<div class="visual-top eyebrow"><span>VG / {String(index + 1).padStart(2, "0")}</span><span>CG TOOLS</span></div>
+							<svg viewBox="0 0 360 260" fill="none">
+								<defs>
+									<linearGradient id={`cube-${index}`} x1="100" y1="45" x2="270" y2="240" gradientUnits="userSpaceOnUse">
+										<stop stop-color="#d8ddc5" stop-opacity=".8" />
+										<stop offset="1" stop-color="#d8ddc5" stop-opacity=".12" />
+									</linearGradient>
+								</defs>
+								<path d="M20 215H340M40 235H320M70 255H290M180 135L30 255M180 135L90 255M180 135V255M180 135L270 255M180 135L330 255" stroke="#ffffff0d" />
+								<path d="M180 40L266 88V184L180 232L94 184V88L180 40Z" fill="#d8ddc504" stroke={`url(#cube-${index})`} />
+								<path d="M94 88L180 136L266 88M180 136V232" stroke="#d8ddc5" stroke-opacity=".65" />
+								<path d="M180 40V136M94 184L180 136L266 184" stroke="#d8ddc5" stroke-opacity=".2" stroke-dasharray="4 5" />
+								<path d="M137 64L223 112V208M223 64L137 112V208M94 136L180 184L266 136" stroke="#d8ddc5" stroke-opacity=".2" />
+								<circle cx="180" cy="40" r="3" fill="#d8ddc5" />
+								<circle cx="94" cy="88" r="3" fill="#d8ddc5" />
+								<circle cx="266" cy="88" r="3" fill="#d8ddc5" />
+								<circle cx="180" cy="136" r="3" fill="#d8ddc5" />
+								<circle cx="180" cy="232" r="3" fill="#d8ddc5" />
+								<path d="M290 215H318M290 215V187" stroke="#ffffff40" />
+								<text x="324" y="218" fill="#96969f" font-size="8" font-family="monospace">x</text>
+								<text x="287" y="179" fill="#96969f" font-size="8" font-family="monospace">y</text>
+							</svg>
+							<div class="visual-bottom eyebrow"><span>IDEA → CODE → PIXELS</span><span>+</span></div>
+						</div>
+						<div class="project-copy">
+							<p class="eyebrow project-type">OPEN SOURCE / GAME ENGINE</p>
+							<h3><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}<span aria-hidden="true">↗</span></a></h3>
+							<p class="project-description">{project.description}</p>
+							<ul class="tags" aria-label="项目技术与协议">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+							<a href={project.url} target="_blank" rel="noopener noreferrer" class="text-link project-link">探索项目 <span aria-hidden="true">↗</span></a>
+						</div>
+					</article>
+				</li>
+			))}
 		</ul>
-
-		<a
-			href={orgUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="mt-8 inline-block text-sm text-zinc-400 hover:text-white"
-		>
-			查看全部仓库 →
-		</a>
 	</div>
 </section>
+
+<style>
+	section { padding-block: 88px; border-top: 1px solid var(--line); background: #131415; }
+	.projects-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-top: 32px; }
+	h2 { color: #f0f0ee; font-size: 32px; font-weight: 500; letter-spacing: -0.04em; }
+	.projects-heading p { margin-top: 14px; font-size: 13px; line-height: 1.8; color: #96969f; }
+	.projects-heading > a { flex-shrink: 0; padding-bottom: 3px; }
+	.projects-list { margin-top: 36px; display: grid; gap: 24px; }
+	.project { display: grid; grid-template-columns: 0.95fr 1.2fr; border: 1px solid #ffffff1a; border-radius: 6px; overflow: hidden; background: #171819; transition: border-color 180ms ease; }
+	.project:hover, .project:focus-within { border-color: #ffffff40; }
+	.project-visual { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding: 24px; border-right: 1px solid var(--line); background: radial-gradient(ellipse at 50% 60%, #d8ddc507, transparent 70%), #111213; }
+	.visual-top, .visual-bottom { display: flex; justify-content: space-between; font-size: 8px; color: #85858e; }
+	.visual-top span:last-child { color: #a5ae98; }
+	.project-visual svg { width: 100%; max-width: 360px; margin: 12px auto; }
+	.project-copy { padding: 42px; }
+	.project-type { color: #b0b99e; font-size: 9px; }
+	h3 { margin-top: 16px; color: #eee; font-size: 32px; font-weight: 500; letter-spacing: -0.045em; }
+	h3 a { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+	h3 a span { color: #85858e; font-size: 24px; font-weight: 400; }
+	h3 a:hover span { color: #fff; }
+	.project-description { margin-top: 18px; color: #a0a0a8; font-size: 13px; line-height: 2; }
+	.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+	.tags li { border: 1px solid #ffffff14; border-radius: 3px; padding: 4px 9px; color: #b3b3bb; font: 10px/1.5 Consolas, monospace; }
+	.project-link { margin-top: 30px; font-size: 12px; }
+	@media (max-width: 760px) {
+		section { padding-block: 60px; }
+		.projects-heading { flex-wrap: wrap; align-items: start; }
+		h2 { font-size: 28px; }
+		.project-copy { padding: 30px; }
+	}
+	@media (max-width: 600px) {
+		.project { grid-template-columns: 1fr; }
+		.project-visual { border-right: 0; border-bottom: 1px solid var(--line); }
+		.project-visual svg { max-width: 250px; }
+		.project-copy { padding: 28px 24px; }
+	}
+</style>

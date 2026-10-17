@@ -1,0 +1,14 @@
+---
+interface Props {
+	class?: string;
+	tone?: "light" | "dark";
+}
+
+const { class: className, tone = "light" } = Astro.props;
+// Crop the supplied artwork's padding for compact placements.
+const source = tone === "light" ? "/logo-black.svg" : "/logo-white.svg";
+---
+
+<svg class={className} viewBox="108 120 264 240" width="44" height="40" fill="none" aria-hidden="true" focusable="false">
+	<image href={source} width="480" height="480" />
+</svg>

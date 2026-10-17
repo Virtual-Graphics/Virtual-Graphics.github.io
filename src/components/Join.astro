@@ -1,31 +1,48 @@
 ---
+import BrandMark from "./BrandMark.astro";
 import { orgUrl, tdsgUrl } from "../data/projects";
 ---
 
-<section id="join" class="border-t border-zinc-800">
-	<div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
-		<h2 class="text-2xl font-bold text-white sm:text-3xl">加入我们</h2>
-		<p class="mt-4 max-w-2xl leading-relaxed text-zinc-400">
-			无论你擅长引擎开发、渲染技术，还是热衷于创作与分享，只要对计算机图形学
-			抱有热情，我们都欢迎你的加入。一起让创作者拥有更好的工具。
-		</p>
-		<div class="mt-6 flex flex-wrap gap-5 text-sm">
-			<a
-				href={orgUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-zinc-200 underline underline-offset-4 hover:text-white"
-			>
-				GitHub 组织
-			</a>
-			<a
-				href={tdsgUrl}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-zinc-200 underline underline-offset-4 hover:text-white"
-			>
-				TDSG 社区
-			</a>
+<section id="join" aria-labelledby="join-title">
+	<div class="container">
+		<div class="join-panel">
+			<div class="join-copy">
+				<p class="eyebrow">03 / BUILD WITH US</p>
+				<h2 id="join-title">下一个可能，<br />和我们一起创造。</h2>
+				<p class="join-description">无论你擅长引擎开发、渲染技术，还是热衷于创作与分享，只要对计算机图形学抱有热情，我们都欢迎你的加入。一起让创作者拥有更好的工具。</p>
+				<div class="join-actions">
+					<a href={orgUrl} target="_blank" rel="noopener noreferrer" class="button">加入 GitHub 组织 <span aria-hidden="true">↗</span></a>
+					<a href={tdsgUrl} target="_blank" rel="noopener noreferrer" class="community-link">认识 TDSG 社区 <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+			<BrandMark class="join-mark" tone="dark" />
 		</div>
 	</div>
 </section>
+
+<style>
+	section { padding-block: 80px; border-top: 1px solid var(--line); }
+	.join-panel { position: relative; isolation: isolate; overflow: hidden; padding: 56px; border-radius: 6px; background: #e7e8df; color: #4c4e48; }
+	.join-copy { position: relative; z-index: 1; max-width: 620px; }
+	.eyebrow { color: #62675b; font-size: 10px; }
+	h2 { margin-top: 24px; color: #1b1d18; font-size: 36px; font-weight: 500; line-height: 1.5; letter-spacing: -0.04em; }
+	.join-description { max-width: 520px; margin-top: 20px; font-size: 13px; line-height: 2; }
+	.join-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
+	.button { border-color: #22251e; background: #22251e; color: #f2f3ea; }
+	.button:hover { border-color: #414936; background: #414936; }
+	a:focus-visible { outline-color: #414936; }
+	.community-link { display: inline-flex; align-items: center; gap: 18px; color: #41453a; font-size: 12px; }
+	.community-link:hover { color: #101112; }
+	.join-panel :global(.join-mark) { position: absolute; right: -36px; top: 50%; z-index: 0; width: 340px; height: auto; opacity: 0.055; transform: translateY(-50%) rotate(-8deg); }
+	@media (max-width: 760px) {
+		section { padding-block: 56px; }
+		.join-panel { padding: 36px; }
+		h2 { font-size: 30px; }
+	}
+	@media (max-width: 480px) {
+		.join-panel { padding: 30px 24px; }
+		h2 { font-size: 26px; }
+		.join-actions { align-items: flex-start; gap: 24px; }
+		.join-panel :global(.join-mark) { right: -80px; width: 280px; }
+	}
+</style>

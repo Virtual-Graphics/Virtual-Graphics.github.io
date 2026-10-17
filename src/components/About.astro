@@ -1,43 +1,67 @@
 ---
 const highlights = [
 	{
+		number: "01",
+		label: "OPEN BY DESIGN",
 		title: "开源非营利",
-		description:
-			"所有项目完全开源，采用宽松的开源协议（如 MIT），可以自由学习、修改甚至商用。",
+		description: "所有项目完全开源，采用宽松的开源协议（如 MIT），可以自由学习、修改甚至商用。",
 	},
 	{
+		number: "02",
+		label: "MADE FOR CREATORS",
 		title: "面向创作者",
-		description:
-			"我们的软件主要提供给创作者使用，帮助大家更好地创作游戏、动画与实时图形应用。",
+		description: "我们的软件主要提供给创作者使用，帮助大家更好地创作游戏、动画与实时图形应用。",
 	},
 	{
+		number: "03",
+		label: "DRIVEN BY CURIOSITY",
 		title: "专注图形学",
-		description:
-			"从渲染器、游戏引擎到物理仿真与具身智能训练平台，持续探索计算机图形学的边界。",
+		description: "从渲染器、游戏引擎到物理仿真与具身智能训练平台，持续探索计算机图形学的边界。",
 	},
 ];
 ---
 
-<section id="about" class="border-t border-zinc-800">
-	<div class="mx-auto max-w-5xl px-4 py-16 sm:py-20">
-		<h2 class="text-2xl font-bold text-white sm:text-3xl">关于我们</h2>
-		<p class="mt-4 max-w-3xl leading-relaxed text-zinc-400">
-			Virtual Graphics
-			是一个主要聚焦于计算机图形学软件开发的开源非营利组织，热衷于开发游戏引擎、渲染器、物理仿真软件、具身智能训练平台、动画制作工具等
-			CG Tools。如果有着相同的爱好，欢迎加入我们！
-		</p>
-
-		<ul class="mt-10 grid gap-8 sm:grid-cols-3">
-			{
-				highlights.map((item) => (
-					<li>
-						<h3 class="font-semibold text-white">{item.title}</h3>
-						<p class="mt-2 text-sm leading-relaxed text-zinc-400">
-							{item.description}
-						</p>
-					</li>
-				))
-			}
+<section id="about" aria-labelledby="about-title">
+	<div class="container">
+		<p class="eyebrow section-label">01 / ABOUT US</p>
+		<div class="section-intro">
+			<h2 id="about-title">源于热爱，<br /><span>开放共创。</span></h2>
+			<p>Virtual Graphics 是一个主要聚焦于计算机图形学软件开发的开源非营利组织。我们热衷于开发游戏引擎、渲染器、物理仿真软件、具身智能训练平台、动画制作工具等 CG Tools。<br /><span>如果你也有着相同的爱好，欢迎一起探索。</span></p>
+		</div>
+		<ul class="highlights">
+			{highlights.map((item) => (
+				<li>
+					<div class="highlight-meta eyebrow"><span>{item.number}</span><span>{item.label}</span></div>
+					<h3>{item.title}</h3>
+					<p>{item.description}</p>
+				</li>
+			))}
 		</ul>
 	</div>
 </section>
+
+<style>
+	section { padding-block: 88px; border-top: 1px solid var(--line); }
+	.section-intro { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 80px; margin-top: 32px; }
+	h2 { color: #f0f0ee; font-size: 36px; font-weight: 500; line-height: 1.5; letter-spacing: -0.04em; }
+	h2 span { color: #8d8d96; }
+	.section-intro > p { max-width: 500px; padding-top: 7px; color: #a0a0a8; font-size: 13px; line-height: 2.1; }
+	.section-intro > p span { display: inline-block; margin-top: 12px; color: #d4d4d8; }
+	.highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+	.highlights li { border-top: 1px solid #ffffff26; padding-top: 20px; }
+	.highlight-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 9px; color: #85858e; }
+	.highlight-meta > span:first-child { color: #b9c6a6; }
+	h3 { margin-top: 30px; color: #e8e8e9; font-size: 16px; font-weight: 500; }
+	.highlights p { margin-top: 12px; color: #96969f; font-size: 12px; line-height: 2; }
+	@media (max-width: 760px) {
+		section { padding-block: 60px; }
+		.section-intro { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+		h2 { font-size: 30px; }
+		.highlights { gap: 24px; margin-top: 36px; }
+		.highlight-meta { flex-wrap: wrap; }
+	}
+	@media (max-width: 540px) {
+		.highlights { grid-template-columns: 1fr; gap: 28px; }
+		h3 { margin-top: 18px; }
+	}
+</style>
